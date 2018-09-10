@@ -10,8 +10,8 @@
     "fileName" : "output.txt"
   },
   "tests" : [ {
-    "input" : "Hello world\nI am a file\nRead me until end-of-file.",
-    "output" : "1 Hello world\n2 I am a file\n3 Read me until end-of-file.",
+    "input" : "welcometojava\n3",
+    "output" : "ava\nwel",
     "index" : 0,
     "active" : true
   } ],
