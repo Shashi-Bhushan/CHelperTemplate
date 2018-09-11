@@ -69,32 +69,23 @@ public class SolutionTest {
         String s = in.next();
         int k = in.nextInt();
 
-        String smallest = "";
-        String largest = "";
+        String smallest = s.substring(0,k);
+        String largest = s.substring(0,k);
 
-        int smallestNum = -1;
-        int largestNum = -1;
+        for(int index = 1; index < s.length() - k + 1; index++) {
 
-        for(int index = 0; index < s.length() - k; index++) {
+            String temp = s.substring(index, index + k);
 
-            int localSum = 0;
-            StringBuffer buff = new StringBuffer();
-
-            for(int zindex = 0; zindex < k; zindex++) {
-                char c = s.charAt(index + zindex);
-                buff.append(c);
-
-                localSum += alphabets.get(c);
-
+            String b = getSmaller(smallest, temp);
+            // if smaller of two is not 'smallest'
+            if(!b.equals(smallest)) {
+                smallest = temp;
             }
 
-            if(largestNum < localSum) {
-                largestNum = localSum;
-                smallest = buff.toString();
-            }
-            if(localSum < smallestNum) {
-                smallestNum = localSum;
-                largest = buff.toString();
+            String c = getSmaller(largest, temp);
+            // if smaller of two is 'largest'
+            if(c.equals(largest)) {
+                largest = temp;
             }
         }
 
@@ -107,4 +98,20 @@ public class SolutionTest {
 
 //            return smallest + '\n' + largest;
     }
+
+    private static String getSmaller(String a, String b) {
+        int length = a.length();
+
+        for (int index = 0; index < length; index++) {
+            if(a.charAt(index) < b.charAt(index)) {
+                return a;
+            }
+            if(b.charAt(index) < a.charAt(index)) {
+                return b;
+            }
+        }
+
+        return a;
+    }
+
 }
